@@ -2,7 +2,6 @@ import 'package:deneme/Profil.dart';
 import 'package:deneme/Siparisler.dart';
 import 'package:deneme/UrunListesi.dart';
 import 'package:deneme/loginpage.dart';
-import 'package:deneme/scan.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -79,8 +78,6 @@ class _HomePageState extends State<HomePage> {
                   style: TextStyle(color: Colors.white),
                 ),
                 onTap: () {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => ScanText()));
                   closeDrawer();
                 },
               ),

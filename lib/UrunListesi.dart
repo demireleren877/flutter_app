@@ -30,7 +30,7 @@ class _ListeleState extends State<Listele> {
                   builder: (context, alinanveri) {
                     if (alinanveri.data == null)
                       return Center(
-                        child: CircularProgressIndicator(),
+                        child: Center(child: CircularProgressIndicator()),
                       );
                     else if (alinanveri.hasError) {
                       Fluttertoast.showToast(msg: "Hata");

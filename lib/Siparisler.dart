@@ -22,11 +22,10 @@ class _SiparislerState extends State<Siparisler> {
   _getData() async {
     searchtext.isEmpty ?? true
         ? Fluttertoast.showToast(msg: "Eksik Bilgi Girdiniz!")
-        : webScraper = WebScraper("https://eotoyedekparca.com/");
-    if (await webScraper
-        .loadWebPage("search?q=$searchtext".replaceAll(" ", "+"))) {
-      List<Map<String, dynamic>> titles = webScraper
-          .getElement("h6.pbox1-name.f12.absolute.transition-2", ["title"]);
+        : webScraper = WebScraper("https://www.cimri.com/");
+    if (await webScraper.loadWebPage("$searchtext".replaceAll(" ", "-"))) {
+      List<Map<String, dynamic>> titles =
+          webScraper.getElement("h3.product-title", ["title"]);
       List<Map<String, dynamic>> prices =
           webScraper.getElement('div.pbox1-price.c-18', ["title"]);
       setState(() {
@@ -39,17 +38,11 @@ class _SiparislerState extends State<Siparisler> {
   }
 
   Widget build(BuildContext context) {
-    final allprices = listprices?.map((e) {
-          final price = e["title"].toString();
-          return price;
-        })?.toList() ??
-        [];
     final alltitles = listitles?.map((e) {
           final title = e["title"].toString();
           return ListTile(
             onTap: () {},
             title: Text(title),
-            subtitle: Text(allprices[0]),
           );
         })?.toList() ??
         [];
